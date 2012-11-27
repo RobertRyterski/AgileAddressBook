@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>A simple C# WPF address book developed with agile practices.</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty>
+      <projectUrl>https://github.com/RobertRyterski/AgileAddressBook/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name></name>
+        <refspec></refspec>
+        <url>https://github.com/RobertRyterski/AgileAddressBook.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <disableSubmodules>false</disableSubmodules>
+    <recursiveSubmodules>false</recursiveSubmodules>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <authorOrCommitter>false</authorOrCommitter>
+    <clean>false</clean>
+    <wipeOutWorkspace>false</wipeOutWorkspace>
+    <pruneBranches>false</pruneBranches>
+    <remotePoll>false</remotePoll>
+    <ignoreNotifyCommit>false</ignoreNotifyCommit>
+    <useShallowClone>false</useShallowClone>
+    <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
+    <gitTool>Git</gitTool>
+    <browser class="hudson.plugins.git.browser.GithubWeb">
+      <url>https://github.com/RobertRyterski/AgileAddressBook/</url>
+    </browser>
+    <submoduleCfg class="list"/>
+    <relativeTargetDir></relativeTargetDir>
+    <reference></reference>
+    <excludedRegions></excludedRegions>
+    <excludedUsers></excludedUsers>
+    <gitConfigName></gitConfigName>
+    <gitConfigEmail></gitConfigEmail>
+    <skipTag>false</skipTag>
+    <includedRegions></includedRegions>
+    <scmName></scmName>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector">
+    <com.cloudbees.jenkins.GitHubPushTrigger>
+      <spec></spec>
+    </com.cloudbees.jenkins.GitHubPushTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.plugins.msbuild.MsBuildBuilder>
+      <msBuildName>default</msBuildName>
+      <msBuildFile>AgileAddressBook\AgileAddressBook.sln</msBuildFile>
+      <cmdLineArgs></cmdLineArgs>
+      <buildVariablesAsProperties>true</buildVariablesAsProperties>
+      <continueOnBuildFailure>false</continueOnBuildFailure>
+    </hudson.plugins.msbuild.MsBuildBuilder>
+    <org.jenkinsci.plugins.MsTestBuilder>
+      <msTestName>default</msTestName>
+      <testFiles>AgileAddressBook\AgileAddressBook.Test\bin\Debug\AgileAddressBook.Test.dll</testFiles>
+      <categories></categories>
+      <resultFile>AgileAddressBook\AgileAddressBook.Test\TestResults\results.trx</resultFile>
+      <cmdLineArgs></cmdLineArgs>
+    </org.jenkinsci.plugins.MsTestBuilder>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
