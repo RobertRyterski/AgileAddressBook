@@ -21,34 +21,54 @@ namespace AgileAddressBook
         {
             get
             {
-                return "";
+                return FirstName + " " + LastName;
             }
         }
 
         // constructors
-        public Contact() { }
-        public Contact(string first, string last) { }
-        public Contact(string first, string last, long phone, string address, string city, string state, int zip) { }
+        public Contact()
+        {
+            // do nothing for now
+        }
+        
+        public Contact(string first, string last)
+        {
+            FirstName = first;
+            LastName = last;
+        }
+        
+        public Contact(string first, string last, long phone, string address, string city, string state, int zip)
+        {
+            FirstName = first;
+            LastName = last;
+            Phone = phone;
+            Address = address;
+            City = city;
+            State = state;
+            Zip = zip;
+        }
 
         // returns full name
         public override string ToString()
         {
-            return base.ToString();
+            return FullName;
         }
 
         public int GetPhoneAreaCode()
         {
-            return 0;
+            return (int)(Phone / 10000000);
         }
 
         public int GetPhoneExtension()
         {
-            return 0;
+            return (int)(Phone % 10000000);
         }
 
         public string EncodePhoneString()
         {
-            return string.Empty;
+            int three = (int)(GetPhoneExtension() / 10000);
+            int four = (int)(GetPhoneExtension() % 10000);
+            return GetPhoneAreaCode() + "-" + three + "-" + four;
         }
     }
 }

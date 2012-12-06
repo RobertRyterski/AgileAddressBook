@@ -248,8 +248,8 @@ namespace AgileAddressBook.Test
         public void GetPhoneExtensionTest()
         {
             Contact target = new Contact();
-            target.Phone = 8675309;
-            int expected = 5309;
+            target.Phone = 5558675309;
+            int expected = 8675309;
             int actual = target.GetPhoneExtension();
             Assert.AreEqual(expected, actual);
         }
