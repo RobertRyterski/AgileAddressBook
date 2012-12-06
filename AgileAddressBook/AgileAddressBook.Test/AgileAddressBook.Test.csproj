@@ -58,9 +58,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Shadow Include="Test References\AgileAddressBook.accessor" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AgileAddressBook\AgileAddressBook.csproj">
       <Project>{40C5F882-29CA-4BFC-84BF-93203628BDA9}</Project>
       <Name>AgileAddressBook</Name>

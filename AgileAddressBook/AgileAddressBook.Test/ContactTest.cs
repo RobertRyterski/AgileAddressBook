@@ -68,7 +68,6 @@ namespace AgileAddressBook.Test
         ///A test for Contact Constructor
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("AgileAddressBook.exe")]
         public void ContactConstructorTest()
         {
             string first = string.Empty; // TODO: Initialize to an appropriate value
@@ -78,7 +77,7 @@ namespace AgileAddressBook.Test
             string city = string.Empty; // TODO: Initialize to an appropriate value
             string state = string.Empty; // TODO: Initialize to an appropriate value
             int zip = 0; // TODO: Initialize to an appropriate value
-            Contact_Accessor target = new Contact_Accessor(first, last, phone, address, city, state, zip);
+            Contact target = new Contact(first, last, phone, address, city, state, zip);
             Assert.Inconclusive("TODO: Implement code to verify target");
         }
 
@@ -86,12 +85,11 @@ namespace AgileAddressBook.Test
         ///A test for Contact Constructor
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("AgileAddressBook.exe")]
         public void ContactConstructorTest1()
         {
             string first = string.Empty; // TODO: Initialize to an appropriate value
             string last = string.Empty; // TODO: Initialize to an appropriate value
-            Contact_Accessor target = new Contact_Accessor(first, last);
+            Contact target = new Contact(first, last);
             Assert.Inconclusive("TODO: Implement code to verify target");
         }
 
@@ -99,10 +97,9 @@ namespace AgileAddressBook.Test
         ///A test for Contact Constructor
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("AgileAddressBook.exe")]
         public void ContactConstructorTest2()
         {
-            Contact_Accessor target = new Contact_Accessor();
+            Contact target = new Contact();
             Assert.Inconclusive("TODO: Implement code to verify target");
         }
 
@@ -110,10 +107,9 @@ namespace AgileAddressBook.Test
         ///A test for ToString
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("AgileAddressBook.exe")]
         public void ToStringTest()
         {
-            Contact_Accessor target = new Contact_Accessor(); // TODO: Initialize to an appropriate value
+            Contact target = new Contact(); // TODO: Initialize to an appropriate value
             string expected = string.Empty; // TODO: Initialize to an appropriate value
             string actual;
             actual = target.ToString();
@@ -125,10 +121,9 @@ namespace AgileAddressBook.Test
         ///A test for Address
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("AgileAddressBook.exe")]
         public void AddressTest()
         {
-            Contact_Accessor target = new Contact_Accessor(); // TODO: Initialize to an appropriate value
+            Contact target = new Contact(); // TODO: Initialize to an appropriate value
             string expected = string.Empty; // TODO: Initialize to an appropriate value
             string actual;
             target.Address = expected;
@@ -141,10 +136,9 @@ namespace AgileAddressBook.Test
         ///A test for City
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("AgileAddressBook.exe")]
         public void CityTest()
         {
-            Contact_Accessor target = new Contact_Accessor(); // TODO: Initialize to an appropriate value
+            Contact target = new Contact(); // TODO: Initialize to an appropriate value
             string expected = string.Empty; // TODO: Initialize to an appropriate value
             string actual;
             target.City = expected;
@@ -157,10 +151,9 @@ namespace AgileAddressBook.Test
         ///A test for FirstName
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("AgileAddressBook.exe")]
         public void FirstNameTest()
         {
-            Contact_Accessor target = new Contact_Accessor(); // TODO: Initialize to an appropriate value
+            Contact target = new Contact(); // TODO: Initialize to an appropriate value
             string expected = string.Empty; // TODO: Initialize to an appropriate value
             string actual;
             target.FirstName = expected;
@@ -173,10 +166,9 @@ namespace AgileAddressBook.Test
         ///A test for FullName
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("AgileAddressBook.exe")]
         public void FullNameTest()
         {
-            Contact_Accessor target = new Contact_Accessor(); // TODO: Initialize to an appropriate value
+            Contact target = new Contact(); // TODO: Initialize to an appropriate value
             string actual;
             actual = target.FullName;
             Assert.Inconclusive("Verify the correctness of this test method.");
@@ -186,10 +178,9 @@ namespace AgileAddressBook.Test
         ///A test for LastName
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("AgileAddressBook.exe")]
         public void LastNameTest()
         {
-            Contact_Accessor target = new Contact_Accessor(); // TODO: Initialize to an appropriate value
+            Contact target = new Contact(); // TODO: Initialize to an appropriate value
             string expected = string.Empty; // TODO: Initialize to an appropriate value
             string actual;
             target.LastName = expected;
@@ -202,10 +193,9 @@ namespace AgileAddressBook.Test
         ///A test for Phone
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("AgileAddressBook.exe")]
         public void PhoneTest()
         {
-            Contact_Accessor target = new Contact_Accessor(); // TODO: Initialize to an appropriate value
+            Contact target = new Contact(); // TODO: Initialize to an appropriate value
             int expected = 0; // TODO: Initialize to an appropriate value
             int actual;
             target.Phone = expected;
@@ -218,10 +208,9 @@ namespace AgileAddressBook.Test
         ///A test for State
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("AgileAddressBook.exe")]
         public void StateTest()
         {
-            Contact_Accessor target = new Contact_Accessor(); // TODO: Initialize to an appropriate value
+            Contact target = new Contact(); // TODO: Initialize to an appropriate value
             string expected = string.Empty; // TODO: Initialize to an appropriate value
             string actual;
             target.State = expected;
@@ -234,10 +223,9 @@ namespace AgileAddressBook.Test
         ///A test for Zip
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("AgileAddressBook.exe")]
         public void ZipTest()
         {
-            Contact_Accessor target = new Contact_Accessor(); // TODO: Initialize to an appropriate value
+            Contact target = new Contact(); // TODO: Initialize to an appropriate value
             int expected = 0; // TODO: Initialize to an appropriate value
             int actual;
             target.Zip = expected;
