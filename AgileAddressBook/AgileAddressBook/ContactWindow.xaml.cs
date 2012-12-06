@@ -9,37 +9,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AgileAddressBook
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ContactWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ContactWindow : Window
     {
-        public MainWindow()
+        public ContactWindow()
         {
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void addButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void editButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        private void okButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
