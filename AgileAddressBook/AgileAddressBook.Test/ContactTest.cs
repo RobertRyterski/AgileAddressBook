@@ -1,6 +1,7 @@
 ﻿using AgileAddressBook;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.ComponentModel;
 
 namespace AgileAddressBook.Test
 {    
@@ -101,118 +102,13 @@ namespace AgileAddressBook.Test
         }
 
         /// <summary>
-        /// A test for Address
-        ///</summary>
-        [TestMethod()]
-        public void AddressTest()
-        {
-            Contact target = new Contact(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.Address = expected;
-            actual = target.Address;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for City
-        ///</summary>
-        [TestMethod()]
-        public void CityTest()
-        {
-            Contact target = new Contact(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.City = expected;
-            actual = target.City;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for FirstName
-        ///</summary>
-        [TestMethod()]
-        public void FirstNameTest()
-        {
-            Contact target = new Contact(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.FirstName = expected;
-            actual = target.FirstName;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        /// A test for the generated FullName
+        /// A test for the generated FullName.
         ///</summary>
         [TestMethod()]
         public void FullNameTest()
         {
             Contact target = new Contact("Butch", "Deadlift");
             Assert.AreEqual("Butch Deadlift", target.FullName);
-        }
-
-        /// <summary>
-        ///A test for LastName
-        ///</summary>
-        [TestMethod()]
-        public void LastNameTest()
-        {
-            Contact target = new Contact(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.LastName = expected;
-            actual = target.LastName;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for Phone
-        ///</summary>
-        [TestMethod()]
-        public void PhoneTest()
-        {
-            Contact target = new Contact(); // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
-            long actual;
-            target.Phone = expected;
-            actual = target.Phone;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for State
-        ///</summary>
-        [TestMethod()]
-        public void StateTest()
-        {
-            Contact target = new Contact(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.State = expected;
-            actual = target.State;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for Zip
-        ///</summary>
-        [TestMethod()]
-        public void ZipTest()
-        {
-            Contact target = new Contact(); // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
-            int actual;
-            target.Zip = expected;
-            actual = target.Zip;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
@@ -242,7 +138,7 @@ namespace AgileAddressBook.Test
         }
 
         /// <summary>
-        ///A test for Clone
+        /// A test for Clone.
         ///</summary>
         [TestMethod()]
         public void CloneTest()
@@ -266,7 +162,7 @@ namespace AgileAddressBook.Test
         }
 
         /// <summary>
-        ///A test for Copy
+        /// A test for Copy.
         ///</summary>
         [TestMethod()]
         public void CopyTest()
@@ -288,5 +184,158 @@ namespace AgileAddressBook.Test
             Assert.AreEqual(state, target.State);
             Assert.AreEqual(zip, target.Zip);
         }
+
+        /// <summary>
+        /// A test to see that the GUI is notified via INotifyPropertyChanged when FirstName is modified.
+        ///</summary>
+        [TestMethod()]
+        public void FirstNameNotifyTest()
+        {
+            // based on http://www.benday.com/2010/08/24/an-easier-way-to-unit-test-inotifypropertychanged-in-silverlightwpf/
+            Contact target = new Contact("Bolt", "Vanderhuge");
+            bool firstNameChanged = false;
+            bool fullNameChanged = false;
+            ((INotifyPropertyChanged)target).PropertyChanged +=
+                delegate(object sender, PropertyChangedEventArgs e)
+                {
+                    firstNameChanged = firstNameChanged || e.PropertyName == "FirstName";
+                    fullNameChanged = fullNameChanged || e.PropertyName == "FullName";
+                };
+
+            var newValue = "Lightning";
+            target.FirstName = newValue;
+            Assert.AreEqual(newValue, target.FirstName);
+            Assert.IsTrue(firstNameChanged, "FirstName not seen in delegate.");
+            Assert.IsTrue(fullNameChanged, "FullName not seen in delegate.");
+        }
+
+        /// <summary>
+        /// A test to see that the GUI is notified via INotifyPropertyChanged when LastName is modified.
+        ///</summary>
+        [TestMethod()]
+        public void LastNameNotifyTest()
+        {
+            // based on http://www.benday.com/2010/08/24/an-easier-way-to-unit-test-inotifypropertychanged-in-silverlightwpf/
+            Contact target = new Contact("Blast", "Hardcheese");
+            bool lastNameChanged = false;
+            bool fullNameChanged = false;
+            ((INotifyPropertyChanged)target).PropertyChanged +=
+                delegate(object sender, PropertyChangedEventArgs e)
+                {
+                    lastNameChanged = lastNameChanged || e.PropertyName == "LastName";
+                    fullNameChanged = fullNameChanged || e.PropertyName == "FullName";
+                };
+
+            var newValue = "Softcheese";
+            target.LastName = newValue;
+            Assert.AreEqual(newValue, target.LastName);
+            Assert.IsTrue(lastNameChanged, "LastName not seen in delegate.");
+            Assert.IsTrue(fullNameChanged, "FullName not seen in delegate.");
+        }
+
+        /// <summary>
+        /// A test to see that the GUI is notified via INotifyPropertyChanged when Phone is modified.
+        ///</summary>
+        [TestMethod()]
+        public void PhoneNotifyTest()
+        {
+            // based on http://www.benday.com/2010/08/24/an-easier-way-to-unit-test-inotifypropertychanged-in-silverlightwpf/
+            Contact target = new Contact();
+            bool changed = false;
+            ((INotifyPropertyChanged)target).PropertyChanged +=
+                delegate(object sender, PropertyChangedEventArgs e)
+                {
+                    changed = e.PropertyName == "Phone";
+                };
+
+            var newValue = 5558675309;
+            target.Phone = newValue;
+            Assert.AreEqual(newValue, target.Phone);
+            Assert.IsTrue(changed, "FirstName not seen in delegate.");
+        }
+
+        /// <summary>
+        /// A test to see that the GUI is notified via INotifyPropertyChanged when Address is modified.
+        ///</summary>
+        [TestMethod()]
+        public void AddressNotifyTest()
+        {
+            // based on http://www.benday.com/2010/08/24/an-easier-way-to-unit-test-inotifypropertychanged-in-silverlightwpf/
+            Contact target = new Contact();
+            bool changed = false;
+            ((INotifyPropertyChanged)target).PropertyChanged +=
+                delegate(object sender, PropertyChangedEventArgs e)
+                {
+                    changed = e.PropertyName == "Address";
+                };
+
+            var newValue = "123 Fake St";
+            target.Address = newValue;
+            Assert.AreEqual(newValue, target.Address);
+            Assert.IsTrue(changed, "Address not seen in delegate.");
+        }
+
+        /// <summary>
+        /// A test to see that the GUI is notified via INotifyPropertyChanged when City is modified.
+        ///</summary>
+        [TestMethod()]
+        public void CityNotifyTest()
+        {
+            // based on http://www.benday.com/2010/08/24/an-easier-way-to-unit-test-inotifypropertychanged-in-silverlightwpf/
+            Contact target = new Contact();
+            bool changed = false;
+            ((INotifyPropertyChanged)target).PropertyChanged +=
+                delegate(object sender, PropertyChangedEventArgs e)
+                {
+                    changed = e.PropertyName == "City";
+                };
+
+            var newValue = "Albuquerque";
+            target.City = newValue;
+            Assert.AreEqual(newValue, target.City);
+            Assert.IsTrue(changed, "City not seen in delegate.");
+        }
+
+        /// <summary>
+        /// A test to see that the GUI is notified via INotifyPropertyChanged when State is modified.
+        ///</summary>
+        [TestMethod()]
+        public void StateNotifyTest()
+        {
+            // based on http://www.benday.com/2010/08/24/an-easier-way-to-unit-test-inotifypropertychanged-in-silverlightwpf/
+            Contact target = new Contact();
+            bool changed = false;
+            ((INotifyPropertyChanged)target).PropertyChanged +=
+                delegate(object sender, PropertyChangedEventArgs e)
+                {
+                    changed = e.PropertyName == "State";
+                };
+
+            var newValue = "MO";
+            target.State = newValue;
+            Assert.AreEqual(newValue, target.State);
+            Assert.IsTrue(changed, "State not seen in delegate.");
+        }
+
+        /// <summary>
+        /// A test to see that the GUI is notified via INotifyPropertyChanged when Zip is modified.
+        ///</summary>
+        [TestMethod()]
+        public void ZipNotifyTest()
+        {
+            // based on http://www.benday.com/2010/08/24/an-easier-way-to-unit-test-inotifypropertychanged-in-silverlightwpf/
+            Contact target = new Contact();
+            bool changed = false;
+            ((INotifyPropertyChanged)target).PropertyChanged +=
+                delegate(object sender, PropertyChangedEventArgs e)
+                {
+                    changed = e.PropertyName == "Zip";
+                };
+
+            var newValue = 123123;
+            target.Zip = newValue;
+            Assert.AreEqual(newValue, target.Zip);
+            Assert.IsTrue(changed, "Zip not seen in delegate.");
+        }        
     }
 }
