@@ -3,23 +3,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace AgileAddressBook.Test
-{
-    
-    
+{    
     /// <summary>
-    ///This is a test class for ContactTest and is intended
-    ///to contain all ContactTest Unit Tests
+    /// ContactTest contains all the unit tests for the Contact class.
     ///</summary>
     [TestClass()]
     public class ContactTest
     {
-
-
         private TestContext testContextInstance;
 
         /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
+        /// Gets or sets the test context which provides information about and functionality for the current test run.
         ///</summary>
         public TestContext TestContext
         {
@@ -33,92 +27,81 @@ namespace AgileAddressBook.Test
             }
         }
 
-        #region Additional test attributes
-        // 
-        //You can use the following additional attributes as you write your tests:
-        //
-        //Use ClassInitialize to run code before running the first test in the class
-        //[ClassInitialize()]
-        //public static void MyClassInitialize(TestContext testContext)
-        //{
-        //}
-        //
-        //Use ClassCleanup to run code after all tests in a class have run
-        //[ClassCleanup()]
-        //public static void MyClassCleanup()
-        //{
-        //}
-        //
-        //Use TestInitialize to run code before running each test
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //
-        //Use TestCleanup to run code after each test has run
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-        //}
-        //
-        #endregion
-
-
         /// <summary>
-        ///A test for Contact Constructor
+        /// A test for the Contact constructor with all the arguments.
         ///</summary>
         [TestMethod()]
-        public void ContactConstructorTest()
+        public void ContactConstructorAllArgumentsTest()
         {
-            string first = string.Empty; // TODO: Initialize to an appropriate value
-            string last = string.Empty; // TODO: Initialize to an appropriate value
-            int phone = 0; // TODO: Initialize to an appropriate value
-            string address = string.Empty; // TODO: Initialize to an appropriate value
-            string city = string.Empty; // TODO: Initialize to an appropriate value
-            string state = string.Empty; // TODO: Initialize to an appropriate value
-            int zip = 0; // TODO: Initialize to an appropriate value
+            string first = "Slab";
+            string last = "Bulkhead";
+            int phone = 8675309;
+            string address = "123 Fake Street";
+            string city = "Faketon";
+            string state = "MO";
+            int zip = 123123;
             Contact target = new Contact(first, last, phone, address, city, state, zip);
-            Assert.Inconclusive("TODO: Implement code to verify target");
+            Assert.AreEqual(first, target.FirstName);
+            Assert.AreEqual(last, target.LastName);
+            Assert.AreEqual(phone, target.Phone);
+            Assert.AreEqual(address, target.Address);
+            Assert.AreEqual(city, target.City);
+            Assert.AreEqual(state, target.State);
+            Assert.AreEqual(zip, target.Zip);
         }
 
         /// <summary>
-        ///A test for Contact Constructor
+        /// A test for the Contact constructor with only the name arguments.
         ///</summary>
         [TestMethod()]
-        public void ContactConstructorTest1()
+        public void ContactConstructorNameArgumentsTest()
         {
-            string first = string.Empty; // TODO: Initialize to an appropriate value
-            string last = string.Empty; // TODO: Initialize to an appropriate value
+            string first = "Fridge";
+            string last = "Largemeat";
             Contact target = new Contact(first, last);
-            Assert.Inconclusive("TODO: Implement code to verify target");
+            Assert.AreEqual(first, target.FirstName);
+            Assert.AreEqual(last, target.LastName);
+            // default values
+            Assert.AreEqual(0, target.Phone);
+            Assert.IsNull(target.Address);
+            Assert.IsNull(target.City);
+            Assert.IsNull(target.State);
+            Assert.AreEqual(0, target.Zip);
         }
 
         /// <summary>
-        ///A test for Contact Constructor
+        /// A test for the Contact constructor without any arguments.
         ///</summary>
         [TestMethod()]
-        public void ContactConstructorTest2()
+        public void ContactConstructorNoArgumentsTest()
         {
             Contact target = new Contact();
-            Assert.Inconclusive("TODO: Implement code to verify target");
+            // default values
+            Assert.IsNull(target.FirstName);
+            Assert.IsNull(target.LastName);            
+            Assert.AreEqual(0, target.Phone);
+            Assert.IsNull(target.Address);
+            Assert.IsNull(target.City);
+            Assert.IsNull(target.State);
+            Assert.AreEqual(0, target.Zip);
         }
 
         /// <summary>
-        ///A test for ToString
+        /// A test for ToString.
         ///</summary>
         [TestMethod()]
         public void ToStringTest()
         {
-            Contact target = new Contact(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
+            Contact target = new Contact("Punt", "Speedchunk");
+            // ToString should just join the name
+            string expected = "Punt Speedchunk";
             string actual;
             actual = target.ToString();
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
-        ///A test for Address
+        /// A test for Address
         ///</summary>
         [TestMethod()]
         public void AddressTest()
@@ -163,15 +146,13 @@ namespace AgileAddressBook.Test
         }
 
         /// <summary>
-        ///A test for FullName
+        /// A test for the generated FullName
         ///</summary>
         [TestMethod()]
         public void FullNameTest()
         {
-            Contact target = new Contact(); // TODO: Initialize to an appropriate value
-            string actual;
-            actual = target.FullName;
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Contact target = new Contact("Butch", "Deadlift");
+            Assert.AreEqual("Butch Deadlift", target.FullName);
         }
 
         /// <summary>
