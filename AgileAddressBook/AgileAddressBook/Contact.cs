@@ -10,7 +10,7 @@ namespace AgileAddressBook
         // basic properties
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int Phone { get; set; }
+        public long Phone { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
@@ -28,11 +28,27 @@ namespace AgileAddressBook
         // constructors
         public Contact() { }
         public Contact(string first, string last) { }
-        public Contact(string first, string last, int phone, string address, string city, string state, int zip) { }
+        public Contact(string first, string last, long phone, string address, string city, string state, int zip) { }
 
+        // returns full name
         public override string ToString()
         {
             return base.ToString();
+        }
+
+        public int GetPhoneAreaCode()
+        {
+            return 0;
+        }
+
+        public int GetPhoneExtension()
+        {
+            return 0;
+        }
+
+        public string EncodePhoneString()
+        {
+            return string.Empty;
         }
     }
 }

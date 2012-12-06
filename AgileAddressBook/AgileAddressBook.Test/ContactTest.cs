@@ -35,7 +35,7 @@ namespace AgileAddressBook.Test
         {
             string first = "Slab";
             string last = "Bulkhead";
-            int phone = 8675309;
+            long phone = 5558675309;
             string address = "123 Fake Street";
             string city = "Faketon";
             string state = "MO";
@@ -178,7 +178,7 @@ namespace AgileAddressBook.Test
         {
             Contact target = new Contact(); // TODO: Initialize to an appropriate value
             int expected = 0; // TODO: Initialize to an appropriate value
-            int actual;
+            long actual;
             target.Phone = expected;
             actual = target.Phone;
             Assert.AreEqual(expected, actual);
@@ -213,6 +213,45 @@ namespace AgileAddressBook.Test
             actual = target.Zip;
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        /// A test for GetPhoneAreaCode.
+        ///</summary>
+        [TestMethod()]
+        public void GetPhoneAreaCodeTest()
+        {
+            Contact target = new Contact();
+            target.Phone = 5558675309;
+            int expected = 555;
+            int actual = target.GetPhoneAreaCode();
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        /// A test for EncodePhoneString.
+        ///</summary>
+        [TestMethod()]
+        public void EncodePhoneStringTest()
+        {
+            Contact target = new Contact();
+            target.Phone = 5558675309;
+            string expected = "555-867-5309";
+            string actual = target.EncodePhoneString();
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        /// A test for GetPhoneExtension.
+        ///</summary>
+        [TestMethod()]
+        public void GetPhoneExtensionTest()
+        {
+            Contact target = new Contact();
+            target.Phone = 8675309;
+            int expected = 5309;
+            int actual = target.GetPhoneExtension();
+            Assert.AreEqual(expected, actual);
         }
     }
 }
