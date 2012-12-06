@@ -112,15 +112,41 @@ namespace AgileAddressBook.Test
         }
 
         /// <summary>
-        /// A test for GetPhoneAreaCode.
+        /// A test for PhoneAreaCode.
         ///</summary>
         [TestMethod()]
-        public void GetPhoneAreaCodeTest()
+        public void PhoneAreaCodeTest()
         {
             Contact target = new Contact();
             target.Phone = 5558675309;
             int expected = 555;
-            int actual = target.GetPhoneAreaCode();
+            int actual = target.PhoneAreaCode;
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        /// A test for PhoneOffice.
+        ///</summary>
+        [TestMethod()]
+        public void PhoneOfficeTest()
+        {
+            Contact target = new Contact();
+            target.Phone = 5558675309;
+            int expected = 867;
+            int actual = target.PhoneOffice;
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        /// A test for PhoneExtension.
+        ///</summary>
+        [TestMethod()]
+        public void PhoneExtensionTest()
+        {
+            Contact target = new Contact();
+            target.Phone = 5558675309;
+            int expected = 5309;
+            int actual = target.PhoneExtention;
             Assert.AreEqual(expected, actual);
         }
 
@@ -128,12 +154,12 @@ namespace AgileAddressBook.Test
         /// A test for EncodePhoneString.
         ///</summary>
         [TestMethod()]
-        public void EncodePhoneStringTest()
+        public void PhoneStringTest()
         {
             Contact target = new Contact();
             target.Phone = 5558675309;
             string expected = "555-867-5309";
-            string actual = target.EncodePhoneString();
+            string actual = target.PhoneString;
             Assert.AreEqual(expected, actual);
         }
 

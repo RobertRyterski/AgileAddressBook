@@ -119,6 +119,40 @@ namespace AgileAddressBook
             }
         }
 
+        public int PhoneAreaCode
+        {
+            get
+            {
+                return (int)(Phone / 10000000);
+            }
+        }
+
+        public int PhoneOffice
+        {
+            get
+            {
+                int three = (int)((_phone % 10000000) / 10000);
+                return three;
+            }
+        }
+
+        public int PhoneExtention
+        {
+            get
+            {
+                int four = (int)((_phone % 10000000) % 10000);
+                return four;
+            }
+        }
+
+        public string PhoneString
+        {
+            get
+            {
+                return PhoneAreaCode + "-" + PhoneOffice + "-" + PhoneExtention;
+            }
+        }
+
         // constructors
         public Contact()
         {
@@ -146,23 +180,6 @@ namespace AgileAddressBook
         public override string ToString()
         {
             return FullName;
-        }
-
-        public int GetPhoneAreaCode()
-        {
-            return (int)(Phone / 10000000);
-        }
-
-        public int GetPhoneExtension()
-        {
-            return (int)(Phone % 10000000);
-        }
-
-        public string EncodePhoneString()
-        {
-            int three = (int)(GetPhoneExtension() / 10000);
-            int four = (int)(GetPhoneExtension() % 10000);
-            return GetPhoneAreaCode() + "-" + three + "-" + four;
         }
 
         protected void OnPropertyChanged(string name)
