@@ -173,5 +173,21 @@ namespace AgileAddressBook
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+
+        public Contact Clone()
+        {
+            return new Contact(FirstName, LastName, Phone, Address, City, State, Zip);
+        }
+
+        public void Copy(Contact other)
+        {
+            FirstName = other.FirstName;
+            LastName = other.LastName;
+            Phone = other.Phone;
+            Address = other.Address;
+            City = other.City;
+            State = other.State;
+            Zip = other.Zip;
+        }
     }
 }

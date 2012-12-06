@@ -242,16 +242,51 @@ namespace AgileAddressBook.Test
         }
 
         /// <summary>
-        /// A test for GetPhoneExtension.
+        ///A test for Clone
         ///</summary>
         [TestMethod()]
-        public void GetPhoneExtensionTest()
+        public void CloneTest()
         {
-            Contact target = new Contact();
-            target.Phone = 5558675309;
-            int expected = 8675309;
-            int actual = target.GetPhoneExtension();
-            Assert.AreEqual(expected, actual);
+            string first = "Bold";
+            string last = "Bigflank";
+            long phone = 5558675309;
+            string address = "123 Fake Street";
+            string city = "Faketon";
+            string state = "MO";
+            int zip = 123123;
+            Contact original = new Contact(first, last, phone, address, city, state, zip);
+            Contact target = original.Clone();
+            Assert.AreEqual(first, target.FirstName);
+            Assert.AreEqual(last, target.LastName);
+            Assert.AreEqual(phone, target.Phone);
+            Assert.AreEqual(address, target.Address);
+            Assert.AreEqual(city, target.City);
+            Assert.AreEqual(state, target.State);
+            Assert.AreEqual(zip, target.Zip);
+        }
+
+        /// <summary>
+        ///A test for Copy
+        ///</summary>
+        [TestMethod()]
+        public void CopyTest()
+        {
+            string first = "Flint";
+            string last = "Ironstag";
+            long phone = 5558675309;
+            string address = "123 Fake Street";
+            string city = "Faketon";
+            string state = "MO";
+            int zip = 123123;
+            Contact original = new Contact(first, last, phone, address, city, state, zip);
+            Contact target = original.Clone();
+            Assert.AreEqual(first, target.FirstName);
+            Assert.AreEqual(last, target.LastName);
+            Assert.AreEqual(phone, target.Phone);
+            Assert.AreEqual(address, target.Address);
+            Assert.AreEqual(city, target.City);
+            Assert.AreEqual(state, target.State);
+            Assert.AreEqual(zip, target.Zip);
         }
     }
 }

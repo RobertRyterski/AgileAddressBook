@@ -52,13 +52,7 @@ namespace AgileAddressBook
                 Title = "Edit Contact";
                 // copy properties of selected contact for local edits
                 // global change will occur when OK is hit
-                context.FirstName = _original.FirstName;
-                context.LastName = _original.LastName;
-                context.Phone = _original.Phone;
-                context.Address = _original.Address;
-                context.City = _original.City;
-                context.State = _original.State;
-                context.Zip = _original.Zip;
+                context = _original.Clone();
             }
             DataContext = context;
         }
@@ -81,13 +75,7 @@ namespace AgileAddressBook
             }
             else if (_mode.Equals("edit"))
             {
-                _original.FirstName = context.FirstName;
-                _original.LastName = context.LastName;
-                _original.Phone = context.Phone;
-                _original.Address = context.Address;
-                _original.City = context.City;
-                _original.State = context.State;
-                _original.Zip = context.Zip;
+                _original.Copy(context);
             }
             Close();
         }
