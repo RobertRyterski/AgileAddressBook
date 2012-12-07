@@ -146,7 +146,7 @@ namespace AgileAddressBook.Test
             Contact target = new Contact();
             target.Phone = 5558675309;
             int expected = 5309;
-            int actual = target.PhoneExtention;
+            int actual = target.PhoneExtension;
             Assert.AreEqual(expected, actual);
         }
 

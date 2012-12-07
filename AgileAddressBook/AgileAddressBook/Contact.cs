@@ -131,16 +131,16 @@ namespace AgileAddressBook
         {
             get
             {
-                int three = (int)((_phone % 10000000) / 10000);
+                int three = (int)((Phone % 10000000) / 10000);
                 return three;
             }
         }
 
-        public int PhoneExtention
+        public int PhoneExtension
         {
             get
             {
-                int four = (int)((_phone % 10000000) % 10000);
+                int four = (int)((Phone % 10000000) % 10000);
                 return four;
             }
         }
@@ -149,7 +149,7 @@ namespace AgileAddressBook
         {
             get
             {
-                return PhoneAreaCode + "-" + PhoneOffice + "-" + PhoneExtention;
+                return PhoneAreaCode + "-" + PhoneOffice + "-" + PhoneExtension;
             }
         }
 
