@@ -131,7 +131,7 @@ namespace AgileAddressBook
         {
             get
             {
-                int three = (int)((Phone % 10000000) / 10000);
+                int three = (int)(Phone % 10000000 / 10000);
                 return three;
             }
         }
@@ -140,8 +140,7 @@ namespace AgileAddressBook
         {
             get
             {
-                int four = (int)((Phone % 10000000) % 10000);
-                return four;
+                return (int)(Phone % 10000);
             }
         }
 
