@@ -11,7 +11,17 @@
         Width="525"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid Name="contactDataGrid" CanUserAddRows="True" CanUserDeleteRows="True" Margin="12,12,12,41" SelectionMode="Single" IsReadOnly="True" />
+        <DataGrid Name="contactDataGrid" CanUserAddRows="True" CanUserDeleteRows="True" Margin="12,12,12,41" SelectionMode="Single" IsReadOnly="True" ItemsSource="{Binding}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=FirstName}" Header="First Name" />
+                <DataGridTextColumn Binding="{Binding Path=LastName}" Header="Last Name" />
+                <DataGridTextColumn Binding="{Binding Path=PhoneString}" Header="Phone" />
+                <DataGridTextColumn Binding="{Binding Path=Address}" Header="Address" />
+                <DataGridTextColumn Binding="{Binding Path=City}" Header="City" />
+                <DataGridTextColumn Binding="{Binding Path=State}" Header="State" />
+                <DataGridTextColumn Binding="{Binding Path=Zip}" Header="Zip" />
+            </DataGrid.Columns>
+        </DataGrid>
         <Button Content="Add" Height="23" HorizontalAlignment="Right" Margin="0,0,174,12" Name="addButton" VerticalAlignment="Bottom" Width="75" Click="addButton_Click" />
         <Button Content="Edit" Margin="0,0,93,12" Name="editButton" Click="editButton_Click" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" />
         <Button Content="Delete" Margin="0,0,12,12" Name="deleteButton" HorizontalAlignment="Right" Width="75" Height="23" VerticalAlignment="Bottom" Click="deleteButton_Click" />

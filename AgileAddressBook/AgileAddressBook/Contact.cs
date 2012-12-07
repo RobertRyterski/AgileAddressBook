@@ -53,8 +53,16 @@ namespace AgileAddressBook
             }
             set
             {
-                this._phone = value;
+                // very bad validation
+                if (value > 1000000000 && value <= 9999999999)
+                {
+                    this._phone = value;
+                }
                 this.OnPropertyChanged("Phone");
+                this.OnPropertyChanged("PhoneAreaCode");
+                this.OnPropertyChanged("PhoneOfficeCode");
+                this.OnPropertyChanged("PhoneExtension");
+                this.OnPropertyChanged("PhoneString");
             }
         }
 

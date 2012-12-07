@@ -26,7 +26,10 @@ namespace AgileAddressBook
         {
             InitializeComponent();
             // some contacts to get started with
-            Contact[] start = { new Contact("Splint", "Chesthair"), new Contact("Thick", "McRunfast") };
+            Contact[] start = {
+                                  new Contact("Splint", "Chesthair", 5558675309, "123 Fake St", "Faketon", "MO", 666666),
+                                  new Contact("Thick", "McRunfast", 1112223333, "42 Douglas Ave", "Flowerville", "MO", 123123)
+                              };
             _contacts = new ObservableCollection<Contact>(start);
             contactDataGrid.ItemsSource = _contacts;
         }
@@ -46,7 +49,10 @@ namespace AgileAddressBook
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (contactDataGrid.SelectedValue != null)
+            {
+                _contacts.Remove(contactDataGrid.SelectedValue as Contact);
+            }
         }
     }
 }
