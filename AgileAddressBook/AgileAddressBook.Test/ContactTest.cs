@@ -267,17 +267,29 @@ namespace AgileAddressBook.Test
         {
             // based on http://www.benday.com/2010/08/24/an-easier-way-to-unit-test-inotifypropertychanged-in-silverlightwpf/
             Contact target = new Contact();
-            bool changed = false;
+            bool phoneChanged = false;
+            bool areaCodeChanged = false;
+            bool officeChanged = false;
+            bool extensionChanged = false;
+            bool stringChanged = false;
             ((INotifyPropertyChanged)target).PropertyChanged +=
                 delegate(object sender, PropertyChangedEventArgs e)
                 {
-                    changed = e.PropertyName == "Phone";
+                    phoneChanged = phoneChanged || e.PropertyName == "Phone";
+                    areaCodeChanged = areaCodeChanged || e.PropertyName == "PhoneAreaCode";
+                    officeChanged = officeChanged || e.PropertyName == "PhoneOffice";
+                    extensionChanged = extensionChanged || e.PropertyName == "PhoneExtension";
+                    stringChanged = stringChanged || e.PropertyName == "PhoneString";
                 };
 
             var newValue = 5558675309;
             target.Phone = newValue;
             Assert.AreEqual(newValue, target.Phone);
-            Assert.IsTrue(changed, "FirstName not seen in delegate.");
+            Assert.IsTrue(phoneChanged, "Phone not seen in delegate.");
+            Assert.IsTrue(areaCodeChanged, "PhoneAreaCode not seen in delegate.");
+            Assert.IsTrue(officeChanged, "PhoneOffice not seen in delegate.");
+            Assert.IsTrue(extensionChanged, "PhoneExtension not seen in delegate.");
+            Assert.IsTrue(stringChanged, "PhoneString not seen in delegate.");
         }
 
         /// <summary>

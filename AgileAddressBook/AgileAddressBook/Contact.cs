@@ -60,7 +60,7 @@ namespace AgileAddressBook
                 }
                 this.OnPropertyChanged("Phone");
                 this.OnPropertyChanged("PhoneAreaCode");
-                this.OnPropertyChanged("PhoneOfficeCode");
+                this.OnPropertyChanged("PhoneOffice");
                 this.OnPropertyChanged("PhoneExtension");
                 this.OnPropertyChanged("PhoneString");
             }
