@@ -13,4 +13,4 @@ It demonstrates the following practices:
 * Configuration management
 * Continuous integration
 
-A full report will be made available in this repository.
+The full report is availbe available in the [report](https://github.com/RobertRyterski/AgileAddressBook/tree/master/report) directory.
